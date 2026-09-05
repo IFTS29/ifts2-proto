@@ -103,7 +103,7 @@ def run_sync():
                 "category": "eventos",
                 "media_type": "IMAGE",
                 "image_local_url": "https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=800&q=80",
-                "permalink": "https://instagram.com/ifts2de20",
+                "permalink": "https://instagram.com/ifts_2_ok",
                 "timestamp": datetime.now().isoformat()
             },
             {
@@ -112,7 +112,7 @@ def run_sync():
                 "category": "emprendimientos",
                 "media_type": "IMAGE",
                 "image_local_url": "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=800&q=80",
-                "permalink": "https://instagram.com/ifts2de20",
+                "permalink": "https://instagram.com/ifts_2_ok",
                 "timestamp": datetime.now().isoformat()
             },
             {
@@ -121,7 +121,7 @@ def run_sync():
                 "category": "masterclass",
                 "media_type": "IMAGE",
                 "image_local_url": "https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=800&q=80",
-                "permalink": "https://instagram.com/ifts2de20",
+                "permalink": "https://instagram.com/ifts_2_ok",
                 "timestamp": datetime.now().isoformat()
             }
         ]
@@ -138,7 +138,7 @@ def run_sync():
         media_id = item.get("id")
         media_type = item.get("media_type")
         caption = item.get("caption", "")
-        permalink = item.get("permalink", "https://instagram.com/ifts2de20")
+        permalink = item.get("permalink", "https://instagram.com/ifts_2_ok")
         timestamp = item.get("timestamp", "")
 
         # Elegir URL fuente según sea video o imagen

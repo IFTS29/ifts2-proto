@@ -102,7 +102,7 @@ La estructura equilibra las necesidades de **Aspirantes** y de **Estudiantes Act
 
 ---
 
-## 4. Especificación UI del Carrusel de Instagram (@ifts2de20)
+## 4. Especificación UI del Carrusel de Instagram (@ifts_2_ok)
 
 ### 4.1 Criterio de Curaduría Editorial
 Tal como solicitaron las autoridades del instituto en la reunión de relevamiento, **no se debe volcar un feed social sin filtro**, sino exhibir selectivamente el valor formativo y profesionalizante del IFTS:

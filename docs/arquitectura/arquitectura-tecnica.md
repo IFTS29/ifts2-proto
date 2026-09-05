@@ -32,7 +32,7 @@ Trabajo final tecnicatura IFTS-29. Este documento define el stack, el pipeline d
 ## 3. Pipeline de sincronización con Instagram
 
 ### 3.1 Requisitos previos (una sola vez)
-1. La cuenta `@ifts2de20` debe ser cuenta **profesional** (Business o Creator).
+1. La cuenta `@ifts_2_ok` debe ser cuenta **profesional** (Business o Creator).
 2. Crear una app tipo *Business* en el Meta Developer Dashboard.
 3. Agregar la cuenta del instituto como **tester** de esa app (Standard Access). Esto evita el proceso de App Review.
 4. Generar un **token de larga duración** (Instagram User Access Token, ~60 días de vigencia) mediante el flujo de Login de Instagram (`graph.instagram.com`).
@@ -69,7 +69,7 @@ GET https://graph.instagram.com/refresh_access_token?grant_type=ig_refresh_token
 ### 3.3 Diagrama de flujo (resumen)
 
 ```
-[Instagram @ifts2de20]
+[Instagram @ifts_2_ok]
         |  (post nuevo con #eventos, #cocina, etc.)
         v
 [GitHub Action - cron diario]
