@@ -104,8 +104,8 @@ La estructura equilibra las necesidades de **Aspirantes** y de **Estudiantes Act
 ## 4. Especificación del Carrusel de Instagram (@ifts2de20)
 
 ### 4.1 Criterio de Curaduría Editorial
-Tal como solicitaron las autoridades del instituto, **no se trata de volcar un feed social sin filtro**, sino de mostrar el valor formativo de la institución:
-* **Contenido admitido:** Masterclasses de especialistas, prácticas en cocina de brigada, proyectos de graduación/emprendimientos de estudiantes, convenios y visitas técnicas, actos de colación y eventos institucionales (ej. Concurso de Guiso, catering de eventos de Ciudad).
+Tal como solicitaron las autoridades del instituto en la reunión de relevamiento, **no se debe volcar un feed social sin filtro**, sino exhibir selectivamente el valor formativo y profesionalizante del IFTS:
+* **Contenido admitido:** Masterclasses de especialistas, prácticas en cocina de brigada, proyectos de graduación/emprendimientos de estudiantes, convenios y visitas técnicas, actos de colación y eventos institucionales (ej. Concurso de Guisos Criollos, participación en ferias gastronómicas).
 * **Contenido descartado:** Memes, historias efímeras o avisos informales no académicos.
 
 ### 4.2 Formato y Comportamiento del Componente
@@ -118,35 +118,68 @@ Tal como solicitaron las autoridades del instituto, **no se trata de volcar un f
 
 ---
 
-## 5. Arquitectura Técnica de Automatización (Costo \$0)
+## 5. Arquitectura Técnica de Automatización para la Tesis (Costo $0)
 
-Para garantizar un mantenimiento cero y cero costo de infraestructura, se implementa una arquitectura desacoplada y estática:
+### 5.1 Matriz de Decisión y Evaluación de Alternativas
+
+| Criterio | Opción A: Embeds Manuales (iframes de Meta) | Opción B: Web Scraping no oficial | Opción C (Elegida): Instagram API with Instagram Login + CI/CD |
+| :--- | :--- | :--- | :--- |
+| **Nivel de Automatización** | Nulo (Manual: requiere pegar código post por post). | Alto, pero frágil (se rompe con cualquier cambio de HTML). | **Totalmente automatizado y desatendido.** |
+| **Carga de Trabajo del IFTS** | Inviable (el equipo docente declaró no tener tiempo). | Nula. | **Mantenimiento CERO para el personal del IFTS.** |
+| **Términos de Servicio (TOS)** | Aprobado. | Viola los términos de Meta (riesgo de baneo de IP). | **100% Oficial y en regla con Meta Developer TOS.** |
+| **Estabilidad de Medios** | Alto impacto en performance (scripts pesados de terceros). | Alta tasa de fallo por bloqueo anti-bot. | **Imágenes cacheadas localmente: carga ultrarrápida.** |
+| **Costo de Infraestructura** | $0 | $0 (hasta que bloquean IP y requiere proxies pagos). | **$0 / mes (Astro + GitHub Actions + Cloudflare Pages).** |
+
+### 5.2 El Estándar de Meta en 2026: *Instagram API with Instagram Login*
+1. **Discontinuación de Basic Display API (Diciembre 2024):** Meta dio de baja definitiva la antigua Basic Display API. La vía moderna oficial para cuentas propias es **Instagram API with Instagram Login** (`https://graph.instagram.com`).
+2. **Sin vinculación de Página de Facebook:** A diferencia de la antigua ruta de Facebook Login (que exigía vincular una Fanpage y otorgar permisos complejos de administración), la nueva API permite autenticar directamente con las credenciales de la cuenta institucional de Instagram. Menos fricción y menos piezas que mantener.
+3. **Acceso Estándar (Standard Access) sin App Review:**
+   * Al ser un desarrollo para la propia institución (caso de uso "Own Account / Single Business"), **no se requiere la revisión avanzada comercial (App Review)** de Meta.
+   * Alcanza con registrar la cuenta `@ifts2de20` en el rol de **Instagram Tester** dentro del panel de Meta for Developers. Esto permite consumir el endpoint `/me/media` con cuota oficial sin costo.
+4. **Consumo de Cuota Despreciable:**
+   * Límite de Meta: 200 llamadas por hora por usuario.
+   * Consumo de nuestra solución: **1 a 2 llamadas diarias** (0.04% del límite de la cuota disponible).
+
+### 5.3 Problema de Expiración de URLs y Solución Técnica (CDN/Repo Caching)
+* **La trampa de `media_url`:** Las URLs de imágenes provistas por la API de Graph expiran tras 48 a 72 horas por razones de seguridad y privacidad de Meta. Si un sitio web estático las almacena tal cual, las imágenes se rompen a los pocos días.
+* **Solución aplicada en el pipeline:** El script de sincronización descarga el archivo binario de cada imagen, lo optimiza a formato WebP moderno y lo persiste dentro del repositorio (`assets/instagram/`) o bucket de distribución estática. De este modo, el sitio web sirve sus propias imágenes locales con disponibilidad permanente del 100%.
+
+### 5.4 Gestión Desatendida del Token de Larga Duración (Long-Lived Token)
+* El token de larga duración de Meta tiene una validez de **60 días**.
+* **Estrategia de auto-renovación:** Cada vez que el GitHub Action corre (diariamente), evalúa la antigüedad del token o invoca al endpoint de refresco:
+  ```http
+  GET https://graph.instagram.com/refresh_access_token?grant_type=ig_refresh_token&access_token={LONG_LIVED_TOKEN}
+  ```
+* Al ejecutarse entre el día 30 y 45, el token se renueva por otros 60 días adicionales y actualiza de forma segura el Secret del repositorio vía GitHub API, logrando un ciclo perpetuo desatendido.
+
+### 5.5 Flujo Completo de Integración Continua (Pipeline CI/CD)
 
 ```
-                  ┌─────────────────────────────────────────┐
-                  │ Instagram Graph API (@ifts2de20)        │
-                  └────────────────────┬────────────────────┘
+┌─────────────────────────────────────────────────────────────────────────────┐
+│ 1. PROFESORES / BEDELÍA IFTS 2:                                             │
+│    Publican en @ifts2de20 con hashtags temáticos:                           │
+│    #IFTS2Practicas • #IFTS2Emprende • #IFTS2Masterclass • #IFTS2Eventos      │
+└──────────────────────────────────────┬──────────────────────────────────────┘
                                        │
-                      (Ejecución programada cada 24 hs)
+                         (Cron programado cada 24 hs)
                                        │
-                  ┌────────────────────▼────────────────────┐
-                  │ GitHub Actions (Flujo CI/CD Gratuito)   │
-                  │ - Script en Python (`scripts/fetch.py`) │
-                  │ - Renueva token antes de 60 días        │
-                  │ - Descarga imágenes a carpeta `assets/` │
-                  │ - Genera `data/instagram-feed.json`     │
-                  └────────────────────┬────────────────────┘
+┌──────────────────────────────────────▼──────────────────────────────────────┐
+│ 2. GITHUB ACTIONS (`.github/workflows/instagram-sync.yml`):                 │
+│    - Ejecuta `scripts/fetch_instagram.py`                                   │
+│    - Consulta `graph.instagram.com/me/media`                                │
+│    - Filtra posts por hashtags institucionales                              │
+│    - Descarga y optimiza imágenes a `public/assets/instagram/`              │
+│    - Genera `src/data/instagram-feed.json`                                  │
+│    - Si el token supera los 30 días, lo refresca automáticamente            │
+│    - Hace commit automático solo si hay nuevo contenido                     │
+└──────────────────────────────────────┬──────────────────────────────────────┘
                                        │
-                     (Commit & Deploy estático automático)
+                         (Disparo de Webhook de Deploy)
                                        │
-                  ┌────────────────────▼────────────────────┐
-                  │ Cloudflare Pages / GitHub Pages ($0/mes)│
-                  │ Sitio web estático ultrarrápido         │
-                  │ Imágenes servidas localmente sin caídas │
-                  └─────────────────────────────────────────┘
+┌──────────────────────────────────────▼──────────────────────────────────────┐
+│ 3. HOSTING ESTÁTICO (Cloudflare Pages / GitHub Pages - $0):                 │
+│    - Recompila el sitio en Astro en < 30 segundos                            │
+│    - Despliega HTML/CSS/JS estático puro sin servidor activo                │
+│    - Rendimiento Lighthouse 100/100 • Sin base de datos que mantener        │
+└─────────────────────────────────────────────────────────────────────────────┘
 ```
-
-### Ventajas Operativas:
-1. **Sin dependencia de servidores activos:** No hay base de datos que mantener ni cuotas mensuales.
-2. **Inmunidad ante URLs vencidas de Instagram:** Al descargarse las imágenes durante la compilación, nunca aparecen fotos rotas.
-3. **Renovación automática de tokens:** El script renueva el token de larga duración de Meta antes del día 45, evitando que caduque.

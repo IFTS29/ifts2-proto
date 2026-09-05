@@ -1,0 +1,41 @@
+name: Sincronización Automática Instagram (@ifts2de20)
+
+on:
+  # Ejecución programada diaria (a las 03:00 UTC / 00:00 hora argentina)
+  schedule:
+    - cron: '0 3 * * *'
+  # Permite ejecución manual desde la pestaña Actions en GitHub
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  sync-instagram:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout del repositorio
+        uses: actions/checkout@v4
+
+      - name: Configurar Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Ejecutar script de sincronización
+        env:
+          INSTAGRAM_ACCESS_TOKEN: ${{ secrets.INSTAGRAM_ACCESS_TOKEN }}
+        run: |
+          python scripts/fetch_instagram.py
+
+      - name: Commit y Push de publicaciones e imágenes nuevas
+        run: |
+          git config --global user.name "IFTS2 Bot de Sincronización"
+          git config --global user.email "bot@ifts2.edu.ar"
+          git add data/instagram-feed.json public/assets/instagram/
+          if git diff --staged --quiet; then
+            echo "No hay publicaciones nuevas para commitear."
+          else
+            git commit -m "chore(instagram): actualizar feed institucional y medios locales [skip ci]"
+            git push
+          fi
