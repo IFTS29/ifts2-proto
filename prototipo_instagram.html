@@ -1,0 +1,1100 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>IFTS N° 2 | Tecnicatura Superior en Emprendimientos Gastronómicos</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Oswald:wght@500;600;700&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+            heading: ['Oswald', 'sans-serif'],
+          },
+          colors: {
+            saffron: {
+              500: '#f59e0b',
+              600: '#d97706',
+              700: '#b45309',
+            },
+            terracotta: {
+              600: '#ea580c',
+              700: '#c2410c',
+            },
+            caba: {
+              700: '#047857',
+              800: '#065f46',
+              900: '#064e3b',
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    /* Ocultar barra de desplazamiento manteniendo la funcionalidad de scroll */
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    .no-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+    /* Estilos del efecto Rollover */
+    .insta-slide {
+      transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s ease;
+    }
+    .insta-slide:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.25), 0 8px 10px -6px rgba(0, 0, 0, 0.15);
+    }
+    .insta-overlay {
+      transition: opacity 0.3s ease, backdrop-filter 0.3s ease;
+      opacity: 0;
+      backdrop-filter: blur(4px);
+    }
+    .insta-slide:hover .insta-overlay {
+      opacity: 1;
+    }
+    .insta-img {
+      transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .insta-slide:hover .insta-img {
+      transform: scale(1.06);
+    }
+  </style>
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans antialiased selection:bg-amber-500 selection:text-white">
+
+  <!-- ================= TOP BAR MINISTERIAL ================= -->
+  <div class="bg-slate-950 text-slate-300 text-xs border-b border-slate-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2 flex flex-col sm:flex-row items-center justify-between gap-2">
+      <div class="flex items-center gap-3">
+        <span class="font-bold text-slate-100 tracking-wider uppercase text-[11px]">Gobierno de la Ciudad de Buenos Aires</span>
+        <span class="text-slate-600">|</span>
+        <span class="text-slate-400">DGEST • Ministerio de Educación</span>
+      </div>
+      <div class="flex items-center gap-4 text-[11px]">
+        <a href="https://guarani-autogestionagencia.bue.edu.ar/" target="_blank" class="hover:text-amber-400 transition">SIU Guaraní</a>
+        <a href="https://aulasvirtuales.bue.edu.ar/" target="_blank" class="hover:text-amber-400 transition">Aulas Moodle</a>
+        <a href="https://www.argentina.gob.ar/miargentina" target="_blank" class="hover:text-amber-400 transition">Validez de Título</a>
+        <a href="#contacto" class="text-amber-400 font-semibold hover:underline">Bedelía</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= NAVEGACIÓN PRINCIPAL ================= -->
+  <header class="bg-white border-b border-slate-200 sticky top-0 z-40 shadow-xs">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-20">
+        
+        <!-- Logotipo Institucional -->
+        <a href="#" class="flex items-center gap-4">
+          <div class="w-12 h-12 rounded-xl bg-slate-900 border border-slate-800 flex items-center justify-center text-amber-400 font-heading text-2xl font-bold tracking-tight shadow-md">
+            IF2
+          </div>
+          <div>
+            <div class="text-[10px] font-extrabold tracking-widest text-amber-700 uppercase">Instituto de Formación Técnica Superior N° 2</div>
+            <div class="text-base sm:text-lg font-extrabold text-slate-900 tracking-tight leading-none mt-0.5">
+              D.E. 20 • Emprendimientos Gastronómicos
+            </div>
+            <div class="text-[11px] text-slate-500 font-medium">Nivel Terciario Estatal • Gratuito</div>
+          </div>
+        </a>
+
+        <!-- Menú de Navegación -->
+        <nav class="hidden lg:flex items-center gap-7 text-xs font-bold uppercase tracking-wider text-slate-600">
+          <a href="#perfil" class="hover:text-amber-600 transition">Perfil del Egresado</a>
+          <a href="#plan-estudios" class="hover:text-amber-600 transition">Plan de Estudios</a>
+          <a href="#practicas" class="hover:text-amber-600 transition">Prácticas</a>
+          <a href="#comunidad-instagram" class="text-slate-900 font-extrabold flex items-center gap-1.5 py-1 px-2.5 rounded-lg bg-amber-50 border border-amber-200 text-amber-800">
+            <span>En Vivo Instagram</span>
+            <span class="w-2 h-2 rounded-full bg-rose-500 animate-pulse"></span>
+          </a>
+          <a href="#agenda-archivo" class="hover:text-amber-600 transition">Agenda & Archivo</a>
+          <a href="#contacto" class="hover:text-amber-600 transition">Contacto</a>
+        </nav>
+
+        <!-- CTA Ingreso / Redes -->
+        <div class="flex items-center gap-3">
+          <a href="https://www.instagram.com/ifts2de20" target="_blank" class="hidden sm:inline-flex items-center gap-2 text-slate-700 hover:text-slate-900 text-xs font-bold px-3 py-2 rounded-lg border border-slate-200 hover:border-slate-300 transition">
+            <svg class="w-4 h-4 fill-current text-pink-600" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+            <span>@ifts2de20</span>
+          </a>
+          <a href="#contacto" class="bg-amber-600 hover:bg-amber-700 text-white text-xs font-bold px-4 py-2.5 rounded-lg shadow-sm transition">
+            Inscripción / Consultas
+          </a>
+        </div>
+
+      </div>
+    </div>
+  </header>
+
+  <!-- ================= HERO INSTITUCIONAL (INSPIRADO EN AZAFRÁN) ================= -->
+  <section class="relative bg-slate-950 text-white overflow-hidden py-16 sm:py-24">
+    <!-- Imagen de fondo culinaria con overlay editorial -->
+    <div class="absolute inset-0 opacity-25 bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1556910103-1c02745aae4d?auto=format&fit=crop&w=1920&q=80');"></div>
+    <div class="absolute inset-0 bg-gradient-to-r from-slate-950 via-slate-950/95 to-slate-900/80"></div>
+    
+    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-3xl">
+        
+        <!-- Badges Oficiales -->
+        <div class="flex flex-wrap items-center gap-2 mb-6">
+          <span class="px-3 py-1 rounded-full bg-amber-500/20 border border-amber-500/40 text-amber-300 text-xs font-bold uppercase tracking-wider">
+            Título Oficial con Validez Nacional
+          </span>
+          <span class="px-3 py-1 rounded-full bg-emerald-500/20 border border-emerald-500/40 text-emerald-300 text-xs font-bold uppercase tracking-wider">
+            Res. MEGC N° 1202/07
+          </span>
+        </div>
+
+        <!-- Título Central de la Carrera -->
+        <h1 class="text-3xl sm:text-5xl lg:text-6xl font-extrabold font-heading tracking-normal leading-tight uppercase mb-4 text-slate-100">
+          Tecnicatura Superior en <br>
+          <span class="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 via-amber-200 to-yellow-400">
+            Emprendimientos Gastronómicos
+          </span>
+        </h1>
+
+        <!-- Eje Estratégico Solicitado -->
+        <div class="p-4 rounded-xl bg-slate-900/80 border-l-4 border-amber-500 my-6">
+          <p class="text-lg sm:text-xl font-bold text-amber-300 italic">
+            "No formamos chefs, formamos empresarios gastronómicos."
+          </p>
+          <p class="text-xs text-slate-400 mt-1">
+            Enfoque formativo integral: gerenciamiento culinario, análisis de costos, inocuidad alimentaria, marketing y conducción de empresas gastronómicas.
+          </p>
+        </div>
+
+        <p class="text-sm sm:text-base text-slate-300 mb-8 leading-relaxed">
+          Educación pública, estatal y gratuita de la Ciudad Autónoma de Buenos Aires. Formamos líderes capaces de crear, dirigir y rentabilizar proyectos culinarios de escala local e internacional.
+        </p>
+
+        <!-- Botones de Acción -->
+        <div class="flex flex-wrap gap-4 items-center">
+          <a href="#plan-estudios" class="bg-amber-600 hover:bg-amber-500 text-slate-950 font-extrabold px-6 py-3.5 rounded-xl shadow-lg transition flex items-center gap-2 text-sm">
+            <span>Ver Plan de Carrera</span>
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+          </a>
+          <a href="#comunidad-instagram" class="bg-slate-800 hover:bg-slate-700 text-white font-bold px-6 py-3.5 rounded-xl border border-slate-700 transition flex items-center gap-2 text-sm">
+            <svg class="w-4 h-4 text-pink-500 fill-current" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073z"/></svg>
+            <span>Ver Prácticas en Instagram</span>
+          </a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= FICHA TÉCNICA (PATRÓN AZAFRÁN) ================= -->
+  <section class="bg-white border-b border-slate-200 py-6">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center divide-y md:divide-y-0 md:divide-x divide-slate-200">
+        
+        <div class="pt-3 md:pt-0">
+          <div class="text-[11px] font-bold uppercase tracking-wider text-slate-400">Duración de Carrera</div>
+          <div class="text-xl sm:text-2xl font-extrabold text-slate-900 mt-0.5">3 Años</div>
+          <div class="text-xs text-slate-500">6 Cuatrimestres académicos</div>
+        </div>
+
+        <div class="pt-3 md:pt-0">
+          <div class="text-[11px] font-bold uppercase tracking-wider text-slate-400">Modalidad de Cursada</div>
+          <div class="text-xl sm:text-2xl font-extrabold text-slate-900 mt-0.5">Presencial</div>
+          <div class="text-xs text-slate-500">Con apoyo en Aulas Virtuales</div>
+        </div>
+
+        <div class="pt-3 md:pt-0">
+          <div class="text-[11px] font-bold uppercase tracking-wider text-slate-400">Turno de Cursada</div>
+          <div class="text-xl sm:text-2xl font-extrabold text-slate-900 mt-0.5">Vespertino</div>
+          <div class="text-xs text-slate-500">18:00 a 22:40 hs (Compatible laboral)</div>
+        </div>
+
+        <div class="pt-3 md:pt-0">
+          <div class="text-[11px] font-bold uppercase tracking-wider text-slate-400">Arancel Institucional</div>
+          <div class="text-xl sm:text-2xl font-extrabold text-emerald-700 mt-0.5">100% Gratuito</div>
+          <div class="text-xs text-slate-500">Educación Pública de CABA</div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= PERFIL DEL EGRESADO ================= -->
+  <section id="perfil" class="py-16 bg-slate-50 border-b border-slate-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="max-w-3xl mb-12">
+        <span class="text-xs font-bold text-amber-700 uppercase tracking-widest bg-amber-100/60 px-2.5 py-1 rounded">
+          Competencias Profesionales
+        </span>
+        <h2 class="text-2xl sm:text-4xl font-extrabold text-slate-900 mt-2 tracking-tight">
+          El Rol del Técnico Superior en Emprendimientos Gastronómicos
+        </h2>
+        <p class="text-sm sm:text-base text-slate-600 mt-2 leading-relaxed">
+          El egresado del IFTS N° 2 está preparado para liderar unidades de negocio culinarias, combinando la excelencia técnica con el rigor empresarial y financiero.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        
+        <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-xs hover:border-amber-500 transition">
+          <div class="w-12 h-12 rounded-xl bg-amber-100 text-amber-800 flex items-center justify-center text-xl font-bold mb-4">
+            📈
+          </div>
+          <h3 class="text-base font-bold text-slate-900 mb-2">Costos & Plan de Negocios</h3>
+          <p class="text-xs text-slate-600 leading-relaxed">
+            Formulación y evaluación de proyectos de inversión gastronómica, ingeniería de menú, fijación de precios y rentabilidad de cartas.
+          </p>
+        </div>
+
+        <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-xs hover:border-amber-500 transition">
+          <div class="w-12 h-12 rounded-xl bg-orange-100 text-orange-800 flex items-center justify-center text-xl font-bold mb-4">
+            🍳
+          </div>
+          <h3 class="text-base font-bold text-slate-900 mb-2">Dirección de Brigada</h3>
+          <p class="text-xs text-slate-600 leading-relaxed">
+            Organización y supervisión de cocinas comerciales, estandarización de recetas, flujos de producción y gestión del capital humano.
+          </p>
+        </div>
+
+        <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-xs hover:border-amber-500 transition">
+          <div class="w-12 h-12 rounded-xl bg-emerald-100 text-emerald-800 flex items-center justify-center text-xl font-bold mb-4">
+            🛡️
+          </div>
+          <h3 class="text-base font-bold text-slate-900 mb-2">Bromatología & Seguridad</h3>
+          <p class="text-xs text-slate-600 leading-relaxed">
+            Aplicación estricta de BPM (Buenas Prácticas de Manufactura), control de puntos críticos (HACCP) y legislación bromatológica vigente.
+          </p>
+        </div>
+
+        <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-xs hover:border-amber-500 transition">
+          <div class="w-12 h-12 rounded-xl bg-blue-100 text-blue-800 flex items-center justify-center text-xl font-bold mb-4">
+            🍷
+          </div>
+          <h3 class="text-base font-bold text-slate-900 mb-2">Servicios, Vinos & Eventos</h3>
+          <p class="text-xs text-slate-600 leading-relaxed">
+            Diseño de experiencias enogastronómicas, sommelerie, maridaje, producción de catering masivo y ferias culinarias.
+          </p>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ================= PLAN CURRICULAR (TABS POR AÑO) ================= -->
+  <section id="plan-estudios" class="py-16 bg-white border-b border-slate-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-4">
+        <div>
+          <span class="text-xs font-bold text-amber-700 uppercase tracking-widest bg-amber-50 px-2.5 py-1 rounded">
+            Estructura Académica
+          </span>
+          <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 mt-2 tracking-tight">
+            Plan Curricular de la Carrera
+          </h2>
+          <p class="text-xs sm:text-sm text-slate-500 mt-1">
+            Resolución MEGC N° 1202/07. Cursada vespertina estructurada en asignaturas teóricas, talleres y prácticas en cocina.
+          </p>
+        </div>
+
+        <!-- Selector de Año -->
+        <div class="flex items-center gap-2 p-1 bg-slate-100 rounded-xl border border-slate-200">
+          <button onclick="switchYearTab('year-1', this)" class="year-btn active px-4 py-2 rounded-lg text-xs font-bold bg-white text-slate-900 shadow-xs transition">
+            1° Año
+          </button>
+          <button onclick="switchYearTab('year-2', this)" class="year-btn px-4 py-2 rounded-lg text-xs font-bold text-slate-600 hover:text-slate-900 transition">
+            2° Año
+          </button>
+          <button onclick="switchYearTab('year-3', this)" class="year-btn px-4 py-2 rounded-lg text-xs font-bold text-slate-600 hover:text-slate-900 transition">
+            3° Año
+          </button>
+        </div>
+      </div>
+
+      <!-- Contenido 1° Año -->
+      <div id="year-1" class="year-content grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div class="p-5 rounded-2xl bg-slate-50 border border-slate-200">
+          <span class="text-[10px] font-bold uppercase text-amber-700 bg-amber-100 px-2 py-0.5 rounded">Materias Anuales</span>
+          <h4 class="text-sm font-bold text-slate-900 mt-3 mb-2">Núcleo Fundamental</h4>
+          <ul class="space-y-2 text-xs text-slate-700">
+            <li class="flex items-center gap-2"><span>•</span> Cocina I y Técnicas de Base</li>
+            <li class="flex items-center gap-2"><span>•</span> Panadería y Pastelería I</li>
+            <li class="flex items-center gap-2"><span>•</span> Práctica Profesionalizante I: Observación Organizacional</li>
+          </ul>
+        </div>
+
+        <div class="p-5 rounded-2xl bg-slate-50 border border-slate-200">
+          <span class="text-[10px] font-bold uppercase text-slate-600 bg-slate-200 px-2 py-0.5 rounded">1° Cuatrimestre</span>
+          <h4 class="text-sm font-bold text-slate-900 mt-3 mb-2">Bases Operativas</h4>
+          <ul class="space-y-2 text-xs text-slate-700">
+            <li class="flex items-center gap-2"><span>•</span> Materias Primas en Gastronomía</li>
+            <li class="flex items-center gap-2"><span>•</span> Seguridad e Higiene de Alimentos (Bromatología)</li>
+            <li class="flex items-center gap-2"><span>•</span> Francés Gastronómico I</li>
+          </ul>
+        </div>
+
+        <div class="p-5 rounded-2xl bg-slate-50 border border-slate-200">
+          <span class="text-[10px] font-bold uppercase text-slate-600 bg-slate-200 px-2 py-0.5 rounded">2° Cuatrimestre</span>
+          <h4 class="text-sm font-bold text-slate-900 mt-3 mb-2">Gestión y Cultura</h4>
+          <ul class="space-y-2 text-xs text-slate-700">
+            <li class="flex items-center gap-2"><span>•</span> Servicio de Bar y Restaurante</li>
+            <li class="flex items-center gap-2"><span>•</span> Historia de la Gastronomía y Cultura Alimentaria</li>
+            <li class="flex items-center gap-2"><span>•</span> Enología I</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Contenido 2° Año -->
+      <div id="year-2" class="year-content hidden grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div class="p-5 rounded-2xl bg-slate-50 border border-slate-200">
+          <span class="text-[10px] font-bold uppercase text-amber-700 bg-amber-100 px-2 py-0.5 rounded">Materias Anuales</span>
+          <h4 class="text-sm font-bold text-slate-900 mt-3 mb-2">Técnica Culinaria II</h4>
+          <ul class="space-y-2 text-xs text-slate-700">
+            <li class="flex items-center gap-2"><span>•</span> Cocina II: Cocina Regional y Clásica</li>
+            <li class="flex items-center gap-2"><span>•</span> Panadería y Pastelería II</li>
+            <li class="flex items-center gap-2"><span>•</span> Práctica Profesionalizante II: Gestión de Partida</li>
+          </ul>
+        </div>
+
+        <div class="p-5 rounded-2xl bg-slate-50 border border-slate-200">
+          <span class="text-[10px] font-bold uppercase text-slate-600 bg-slate-200 px-2 py-0.5 rounded">1° Cuatrimestre</span>
+          <h4 class="text-sm font-bold text-slate-900 mt-3 mb-2">Nutrición y Eventos</h4>
+          <ul class="space-y-2 text-xs text-slate-700">
+            <li class="flex items-center gap-2"><span>•</span> Nutrición y Dietética Aplicada</li>
+            <li class="flex items-center gap-2"><span>•</span> Organización y Logística de Eventos</li>
+            <li class="flex items-center gap-2"><span>•</span> Francés Gastronómico II</li>
+          </ul>
+        </div>
+
+        <div class="p-5 rounded-2xl bg-slate-50 border border-slate-200">
+          <span class="text-[10px] font-bold uppercase text-slate-600 bg-slate-200 px-2 py-0.5 rounded">2° Cuatrimestre</span>
+          <h4 class="text-sm font-bold text-slate-900 mt-3 mb-2">Menú y Bebidas</h4>
+          <ul class="space-y-2 text-xs text-slate-700">
+            <li class="flex items-center gap-2"><span>•</span> Elaboración y Diseño de Menú</li>
+            <li class="flex items-center gap-2"><span>•</span> Bebidas e Infusiones</li>
+            <li class="flex items-center gap-2"><span>•</span> Ética Profesional y Deontología</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Contenido 3° Año -->
+      <div id="year-3" class="year-content hidden grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div class="p-5 rounded-2xl bg-slate-50 border border-slate-200">
+          <span class="text-[10px] font-bold uppercase text-amber-700 bg-amber-100 px-2 py-0.5 rounded">Materias Anuales</span>
+          <h4 class="text-sm font-bold text-slate-900 mt-3 mb-2">Gestión y Dirección</h4>
+          <ul class="space-y-2 text-xs text-slate-700">
+            <li class="flex items-center gap-2"><span>•</span> Cocina III: Alta Cocina e Internacional</li>
+            <li class="flex items-center gap-2"><span>•</span> Administración y Gestión de Empresas Gastronómicas</li>
+            <li class="flex items-center gap-2"><span>•</span> Marketing y Comercialización Gastronómica</li>
+            <li class="flex items-center gap-2"><span>•</span> Práctica Profesionalizante III: Proyecto Integrador Final</li>
+          </ul>
+        </div>
+
+        <div class="p-5 rounded-2xl bg-slate-50 border border-slate-200">
+          <span class="text-[10px] font-bold uppercase text-slate-600 bg-slate-200 px-2 py-0.5 rounded">1° Cuatrimestre</span>
+          <h4 class="text-sm font-bold text-slate-900 mt-3 mb-2">Costos e Infraestructura</h4>
+          <ul class="space-y-2 text-xs text-slate-700">
+            <li class="flex items-center gap-2"><span>•</span> Costos y Presupuestos Gastronómicos</li>
+            <li class="flex items-center gap-2"><span>•</span> Diseño y Equipamiento de Cocinas Comerciales</li>
+            <li class="flex items-center gap-2"><span>•</span> Servicios de Catering</li>
+          </ul>
+        </div>
+
+        <div class="p-5 rounded-2xl bg-slate-50 border border-slate-200">
+          <span class="text-[10px] font-bold uppercase text-slate-600 bg-slate-200 px-2 py-0.5 rounded">2° Cuatrimestre</span>
+          <h4 class="text-sm font-bold text-slate-900 mt-3 mb-2">Lanzamiento Comercial</h4>
+          <ul class="space-y-2 text-xs text-slate-700">
+            <li class="flex items-center gap-2"><span>•</span> Cocina Industrial y Producción a Gran Escala</li>
+            <li class="flex items-center gap-2"><span>•</span> Régimen Legal y Derecho Laboral</li>
+            <li class="flex items-center gap-2"><span>•</span> Defensa de Plan de Negocios Gastronómico</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ================= SECCIÓN DESTACADA: CARRUSEL EN VIVO DE INSTAGRAM ================= -->
+  <!-- UBICACIÓN ESTRATÉGICA: Inmediatamente después del perfil y plan curricular, actúa como prueba social viva de las prácticas -->
+  <section id="comunidad-instagram" class="py-16 bg-slate-900 text-white overflow-hidden">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <!-- Encabezado de la Sección de Instagram -->
+      <div class="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-4">
+        <div>
+          <div class="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-pink-400 bg-pink-950/60 px-3 py-1 rounded-full border border-pink-800/60 mb-2">
+            <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073z"/></svg>
+            <span>Instagram Oficial • @ifts2de20</span>
+          </div>
+          <h2 class="text-2xl sm:text-4xl font-extrabold font-heading uppercase tracking-wide">
+            Prácticas Profesionalizantes & Comunidad en Vivo
+          </h2>
+          <p class="text-xs sm:text-sm text-slate-400 mt-1 max-w-2xl">
+            Sincronización automatizada de nuestras prácticas en cocina, degustaciones, catas y ferias emprendedoras.
+          </p>
+        </div>
+
+        <!-- Controles del Carrusel (Flechas Anterior / Siguiente) -->
+        <div class="flex items-center gap-3">
+          <button onclick="scrollCarousel(-1)" aria-label="Anterior" class="w-11 h-11 rounded-xl bg-slate-800 hover:bg-slate-700 border border-slate-700 flex items-center justify-center text-white transition active:scale-95 shadow-sm">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
+          </button>
+          <button onclick="scrollCarousel(1)" aria-label="Siguiente" class="w-11 h-11 rounded-xl bg-amber-600 hover:bg-amber-500 flex items-center justify-center text-slate-950 font-bold transition active:scale-95 shadow-sm">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- Barra de Filtros Temáticos del Carrusel -->
+      <div class="flex flex-wrap items-center gap-2 mb-6">
+        <button onclick="filterCarousel('all', this)" class="c-filter-btn active px-3.5 py-1.5 rounded-lg text-xs font-bold bg-amber-500 text-slate-950 transition">
+          Todos los posts
+        </button>
+        <button onclick="filterCarousel('practicas', this)" class="c-filter-btn px-3.5 py-1.5 rounded-lg text-xs font-semibold bg-slate-800 text-slate-300 hover:bg-slate-700 border border-slate-700 transition">
+          🍲 Prácticas Profesionalizantes
+        </button>
+        <button onclick="filterCarousel('eventos', this)" class="c-filter-btn px-3.5 py-1.5 rounded-lg text-xs font-semibold bg-slate-800 text-slate-300 hover:bg-slate-700 border border-slate-700 transition">
+          🏛️ Eventos Institucionales
+        </button>
+        <button onclick="filterCarousel('emprendedores', this)" class="c-filter-btn px-3.5 py-1.5 rounded-lg text-xs font-semibold bg-slate-800 text-slate-300 hover:bg-slate-700 border border-slate-700 transition">
+          🚀 Emprendedores (3° Año)
+        </button>
+      </div>
+
+      <!-- ================= TRACK DEL CARRUSEL (SLIDER) ================= -->
+      <!-- Proporción de imagen estrictamente estandarizada en ratio cuadrado 1:1 -->
+      <div id="carousel-track" class="flex gap-5 overflow-x-auto scroll-smooth snap-x snap-mandatory no-scrollbar pb-6 pt-2">
+
+        <!-- SLIDE 1: Guiso Fest -->
+        <div class="insta-slide shrink-0 w-[280px] sm:w-[320px] snap-start bg-slate-800 rounded-2xl overflow-hidden border border-slate-700 cursor-pointer group" data-category="practicas" onclick="openPostModal('guiso-fest')">
+          <!-- Contenedor con ratio cuadrado exacto -->
+          <div class="relative aspect-square w-full overflow-hidden bg-slate-950">
+            <img class="insta-img w-full h-full object-cover" src="https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=800&q=80" alt="Guiso Fest">
+            <div class="absolute top-3 left-3 z-10">
+              <span class="bg-black/70 backdrop-blur-md text-amber-400 text-[10px] font-extrabold uppercase px-2.5 py-1 rounded">
+                🍲 Prácticas
+              </span>
+            </div>
+            <div class="absolute top-3 right-3 z-10 w-7 h-7 rounded-full bg-black/60 backdrop-blur-md flex items-center justify-center text-white">
+              <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069z"/></svg>
+            </div>
+
+            <!-- ROLLOVER COMPLETO -->
+            <div class="insta-overlay absolute inset-0 bg-slate-950/90 p-5 flex flex-col justify-between z-20">
+              <div>
+                <span class="text-[10px] text-amber-400 font-bold uppercase tracking-wider block">04 Julio 2025</span>
+                <h4 class="text-base font-bold text-white leading-snug mt-1">Guiso Fest: Práctica Masiva</h4>
+                <p class="text-xs text-slate-300 mt-2 line-clamp-4">
+                  Práctica Profesionalizante a gran escala. Agradecemos a la ESEA de Danza N° 2 "Jorge Donn" y a la Dirección de Educación Artística.
+                </p>
+              </div>
+              <div class="pt-3 border-t border-slate-700 flex items-center justify-between text-[11px]">
+                <span class="text-amber-400 font-bold">Ver publicación</span>
+                <span class="bg-white/10 px-2 py-0.5 rounded text-white">↗</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Pie del Slide -->
+          <div class="p-4 bg-slate-800">
+            <div class="flex items-center justify-between text-[11px] text-slate-400 mb-1">
+              <span>04 Jul 2025</span>
+              <span class="text-amber-400 font-semibold">#GuisoFest</span>
+            </div>
+            <h5 class="text-sm font-bold text-white group-hover:text-amber-400 transition truncate">Guiso Fest: Práctica Profesionalizante</h5>
+          </div>
+        </div>
+
+        <!-- SLIDE 2: Mateada Patria -->
+        <div class="insta-slide shrink-0 w-[280px] sm:w-[320px] snap-start bg-slate-800 rounded-2xl overflow-hidden border border-slate-700 cursor-pointer group" data-category="eventos" onclick="openPostModal('mateada')">
+          <div class="relative aspect-square w-full overflow-hidden bg-slate-950">
+            <img class="insta-img w-full h-full object-cover" src="https://images.unsplash.com/photo-1596797038530-2c107229654b?auto=format&fit=crop&w=800&q=80" alt="Mateada Patria">
+            <div class="absolute top-3 left-3 z-10">
+              <span class="bg-black/70 backdrop-blur-md text-amber-400 text-[10px] font-extrabold uppercase px-2.5 py-1 rounded">
+                🏛️ Eventos
+              </span>
+            </div>
+            <div class="absolute top-3 right-3 z-10 w-7 h-7 rounded-full bg-black/60 backdrop-blur-md flex items-center justify-center text-white">
+              <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069z"/></svg>
+            </div>
+
+            <div class="insta-overlay absolute inset-0 bg-slate-950/90 p-5 flex flex-col justify-between z-20">
+              <div>
+                <span class="text-[10px] text-amber-400 font-bold uppercase tracking-wider block">22 Mayo 2025</span>
+                <h4 class="text-base font-bold text-white leading-snug mt-1">Mateada Patria Institucional</h4>
+                <p class="text-xs text-slate-300 mt-2 line-clamp-4">
+                  Tradición e integración entre comisiones, docentes y graduados. Solo se mantiene visible la última edición vigente en portada.
+                </p>
+              </div>
+              <div class="pt-3 border-t border-slate-700 flex items-center justify-between text-[11px]">
+                <span class="text-amber-400 font-bold">Ver publicación</span>
+                <span class="bg-white/10 px-2 py-0.5 rounded text-white">↗</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="p-4 bg-slate-800">
+            <div class="flex items-center justify-between text-[11px] text-slate-400 mb-1">
+              <span>22 May 2025</span>
+              <span class="text-amber-400 font-semibold">#MateadaPatria</span>
+            </div>
+            <h5 class="text-sm font-bold text-white group-hover:text-amber-400 transition truncate">Mateada Patria Institucional</h5>
+          </div>
+        </div>
+
+        <!-- SLIDE 3: Cata de Infusiones (Emprendedores) -->
+        <div class="insta-slide shrink-0 w-[280px] sm:w-[320px] snap-start bg-slate-800 rounded-2xl overflow-hidden border border-slate-700 cursor-pointer group" data-category="emprendedores" onclick="openPostModal('infusiones')">
+          <div class="relative aspect-square w-full overflow-hidden bg-slate-950">
+            <img class="insta-img w-full h-full object-cover" src="https://images.unsplash.com/photo-1576092768241-dec231879fc3?auto=format&fit=crop&w=800&q=80" alt="Cata de Infusiones">
+            <div class="absolute top-3 left-3 z-10">
+              <span class="bg-black/70 backdrop-blur-md text-amber-400 text-[10px] font-extrabold uppercase px-2.5 py-1 rounded">
+                🚀 Emprendedores
+              </span>
+            </div>
+            <div class="absolute top-3 right-3 z-10 w-7 h-7 rounded-full bg-black/60 backdrop-blur-md flex items-center justify-center text-white">
+              <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069z"/></svg>
+            </div>
+
+            <div class="insta-overlay absolute inset-0 bg-slate-950/90 p-5 flex flex-col justify-between z-20">
+              <div>
+                <span class="text-[10px] text-amber-400 font-bold uppercase tracking-wider block">23 Mayo 2024</span>
+                <h4 class="text-base font-bold text-white leading-snug mt-1">Feria de Infusiones & Blends</h4>
+                <p class="text-xs text-slate-300 mt-2 line-clamp-4">
+                  Presentación de productos culinarios creada por estudiantes de 3° año ("Emprendedores Unidos"). Costeo, formulación y packaging.
+                </p>
+              </div>
+              <div class="pt-3 border-t border-slate-700 flex items-center justify-between text-[11px]">
+                <span class="text-amber-400 font-bold">Ver publicación</span>
+                <span class="bg-white/10 px-2 py-0.5 rounded text-white">↗</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="p-4 bg-slate-800">
+            <div class="flex items-center justify-between text-[11px] text-slate-400 mb-1">
+              <span>23 May 2024</span>
+              <span class="text-amber-400 font-semibold">#Emprendedores</span>
+            </div>
+            <h5 class="text-sm font-bold text-white group-hover:text-amber-400 transition truncate">Feria de Blends e Infusiones</h5>
+          </div>
+        </div>
+
+        <!-- SLIDE 4: Cata de Vinos -->
+        <div class="insta-slide shrink-0 w-[280px] sm:w-[320px] snap-start bg-slate-800 rounded-2xl overflow-hidden border border-slate-700 cursor-pointer group" data-category="practicas" onclick="openPostModal('cata-vinos')">
+          <div class="relative aspect-square w-full overflow-hidden bg-slate-950">
+            <img class="insta-img w-full h-full object-cover" src="https://images.unsplash.com/photo-1510812431401-41d2bd2722f3?auto=format&fit=crop&w=800&q=80" alt="Cata de Vinos">
+            <div class="absolute top-3 left-3 z-10">
+              <span class="bg-black/70 backdrop-blur-md text-amber-400 text-[10px] font-extrabold uppercase px-2.5 py-1 rounded">
+                🍲 Prácticas
+              </span>
+            </div>
+            <div class="absolute top-3 right-3 z-10 w-7 h-7 rounded-full bg-black/60 backdrop-blur-md flex items-center justify-center text-white">
+              <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069z"/></svg>
+            </div>
+
+            <div class="insta-overlay absolute inset-0 bg-slate-950/90 p-5 flex flex-col justify-between z-20">
+              <div>
+                <span class="text-[10px] text-amber-400 font-bold uppercase tracking-wider block">Noviembre 2024</span>
+                <h4 class="text-base font-bold text-white leading-snug mt-1">Cata de Vinos & Enología</h4>
+                <p class="text-xs text-slate-300 mt-2 line-clamp-4">
+                  Práctica sensorial a cargo del Prof. Sommelier Axel Trebino con alumnos de 3° año en su trayecto de bebidas y servicio.
+                </p>
+              </div>
+              <div class="pt-3 border-t border-slate-700 flex items-center justify-between text-[11px]">
+                <span class="text-amber-400 font-bold">Ver publicación</span>
+                <span class="bg-white/10 px-2 py-0.5 rounded text-white">↗</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="p-4 bg-slate-800">
+            <div class="flex items-center justify-between text-[11px] text-slate-400 mb-1">
+              <span>Nov 2024</span>
+              <span class="text-amber-400 font-semibold">#CataDeVinos</span>
+            </div>
+            <h5 class="text-sm font-bold text-white group-hover:text-amber-400 transition truncate">Cata con Sommelier Axel Trebino</h5>
+          </div>
+        </div>
+
+        <!-- SLIDE 5: Noche de los Museos -->
+        <div class="insta-slide shrink-0 w-[280px] sm:w-[320px] snap-start bg-slate-800 rounded-2xl overflow-hidden border border-slate-700 cursor-pointer group" data-category="eventos" onclick="openPostModal('museos')">
+          <div class="relative aspect-square w-full overflow-hidden bg-slate-950">
+            <img class="insta-img w-full h-full object-cover" src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=800&q=80" alt="Noche de los Museos">
+            <div class="absolute top-3 left-3 z-10">
+              <span class="bg-black/70 backdrop-blur-md text-amber-400 text-[10px] font-extrabold uppercase px-2.5 py-1 rounded">
+                🏛️ Eventos
+              </span>
+            </div>
+            <div class="absolute top-3 right-3 z-10 w-7 h-7 rounded-full bg-black/60 backdrop-blur-md flex items-center justify-center text-white">
+              <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069z"/></svg>
+            </div>
+
+            <div class="insta-overlay absolute inset-0 bg-slate-950/90 p-5 flex flex-col justify-between z-20">
+              <div>
+                <span class="text-[10px] text-amber-400 font-bold uppercase tracking-wider block">Noviembre 2024</span>
+                <h4 class="text-base font-bold text-white leading-snug mt-1">Noche de los Museos Porteña</h4>
+                <p class="text-xs text-slate-300 mt-2 line-clamp-4">
+                  Participación del IFTS 2 en el circuito cultural abierto de la Ciudad con muestras gastronómicas históricas.
+                </p>
+              </div>
+              <div class="pt-3 border-t border-slate-700 flex items-center justify-between text-[11px]">
+                <span class="text-amber-400 font-bold">Ver publicación</span>
+                <span class="bg-white/10 px-2 py-0.5 rounded text-white">↗</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="p-4 bg-slate-800">
+            <div class="flex items-center justify-between text-[11px] text-slate-400 mb-1">
+              <span>Nov 2024</span>
+              <span class="text-amber-400 font-semibold">#MuseosCABA</span>
+            </div>
+            <h5 class="text-sm font-bold text-white group-hover:text-amber-400 transition truncate">Presencia en Noche de los Museos</h5>
+          </div>
+        </div>
+
+        <!-- SLIDE 6: Inclusión Esc. Magnasco -->
+        <div class="insta-slide shrink-0 w-[280px] sm:w-[320px] snap-start bg-slate-800 rounded-2xl overflow-hidden border border-slate-700 cursor-pointer group" data-category="eventos" onclick="openPostModal('delantales')">
+          <div class="relative aspect-square w-full overflow-hidden bg-slate-950">
+            <img class="insta-img w-full h-full object-cover" src="https://images.unsplash.com/photo-1556911220-e15b29be8c8f?auto=format&fit=crop&w=800&q=80" alt="Inclusión Magnasco">
+            <div class="absolute top-3 left-3 z-10">
+              <span class="bg-black/70 backdrop-blur-md text-amber-400 text-[10px] font-extrabold uppercase px-2.5 py-1 rounded">
+                🏛️ Eventos
+              </span>
+            </div>
+            <div class="absolute top-3 right-3 z-10 w-7 h-7 rounded-full bg-black/60 backdrop-blur-md flex items-center justify-center text-white">
+              <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073z"/></svg>
+            </div>
+
+            <div class="insta-overlay absolute inset-0 bg-slate-950/90 p-5 flex flex-col justify-between z-20">
+              <div>
+                <span class="text-[10px] text-amber-400 font-bold uppercase tracking-wider block">Octubre 2024</span>
+                <h4 class="text-base font-bold text-white leading-snug mt-1">Articulación Esc. Magnasco</h4>
+                <p class="text-xs text-slate-300 mt-2 line-clamp-4">
+                  Confección y sublimado de delantales y gorros en articulación comunitaria con la Escuela Bilingüe Dr. Osvaldo Magnasco.
+                </p>
+              </div>
+              <div class="pt-3 border-t border-slate-700 flex items-center justify-between text-[11px]">
+                <span class="text-amber-400 font-bold">Ver publicación</span>
+                <span class="bg-white/10 px-2 py-0.5 rounded text-white">↗</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="p-4 bg-slate-800">
+            <div class="flex items-center justify-between text-[11px] text-slate-400 mb-1">
+              <span>Oct 2024</span>
+              <span class="text-amber-400 font-semibold">#Inclusión</span>
+            </div>
+            <h5 class="text-sm font-bold text-white group-hover:text-amber-400 transition truncate">Confección de Indumentaria Esc. Magnasco</h5>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ================= AGENDA VIGENTE VS ARCHIVO HISTÓRICO ================= -->
+  <section id="agenda-archivo" class="py-16 bg-white border-b border-slate-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="max-w-2xl mb-10">
+        <span class="text-xs font-bold text-slate-500 uppercase tracking-widest bg-slate-100 px-2.5 py-1 rounded">
+          Gestión de Información
+        </span>
+        <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 mt-2 tracking-tight">
+          Agenda Vigente & Archivo Institucional
+        </h2>
+        <p class="text-xs sm:text-sm text-slate-500 mt-1">
+          Separación clara entre las actividades del cuatrimestre en curso y el histórico documental de años anteriores.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        
+        <!-- Columna 1 y 2: Actividades del Ciclo Lectivo Vigente -->
+        <div class="lg:col-span-2 space-y-4">
+          <div class="flex items-center justify-between border-b border-slate-200 pb-2">
+            <h3 class="text-xs font-extrabold uppercase tracking-wider text-slate-500 flex items-center gap-2">
+              <span class="w-2.5 h-2.5 rounded-full bg-emerald-500"></span>
+              <span>Ciclo Lectivo 2026 (En Curso)</span>
+            </h3>
+            <span class="text-xs text-slate-400">Actualizado Cuatrimestre I</span>
+          </div>
+
+          <div class="p-5 rounded-xl border border-slate-200 hover:border-amber-500 bg-slate-50/60 hover:bg-white transition flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+            <div>
+              <span class="text-[10px] font-bold text-emerald-800 bg-emerald-100 px-2 py-0.5 rounded uppercase">Institucional</span>
+              <h4 class="text-base font-bold text-slate-900 mt-1">Colación de Grado Anual 2026</h4>
+              <p class="text-xs text-slate-600 mt-1">Acto formal de entrega de diplomas a los nuevos graduados de la Tecnicatura Superior.</p>
+            </div>
+            <div class="text-left sm:text-right shrink-0">
+              <span class="text-xs font-extrabold text-slate-900 block">Noviembre 2026</span>
+              <span class="text-[11px] text-slate-500">Salón de Actos • Turno Vespertino</span>
+            </div>
+          </div>
+
+          <div class="p-5 rounded-xl border border-slate-200 hover:border-amber-500 bg-slate-50/60 hover:bg-white transition flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+            <div>
+              <span class="text-[10px] font-bold text-amber-800 bg-amber-100 px-2 py-0.5 rounded uppercase">Práctica Culinaria</span>
+              <h4 class="text-base font-bold text-slate-900 mt-1">Cierre de 1° Cuatrimestre y Exposición de Emprendimientos</h4>
+              <p class="text-xs text-slate-600 mt-1">Presentación de planes de negocios y muestras gastronómicas de las cátedras de 1° a 3° año.</p>
+            </div>
+            <div class="text-left sm:text-right shrink-0">
+              <span class="text-xs font-extrabold text-slate-900 block">Julio 2026</span>
+              <span class="text-[11px] text-slate-500">Sede Central IFTS N° 2</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Columna 3: Repositorio Histórico por Años -->
+        <div class="bg-slate-50 p-6 rounded-2xl border border-slate-200">
+          <div class="flex items-center gap-2 mb-3">
+            <span class="text-base">📁</span>
+            <h3 class="text-xs font-extrabold uppercase tracking-wider text-slate-800">Archivo Histórico</h3>
+          </div>
+          <p class="text-xs text-slate-500 mb-4">
+            Repositorio de circulares, llamados docentes y eventos de ciclos finalizados:
+          </p>
+
+          <div class="space-y-2 text-xs">
+            <details class="group bg-white p-3 rounded-xl border border-slate-200">
+              <summary class="font-bold text-slate-800 cursor-pointer flex items-center justify-between">
+                <span>Ciclo Lectivo 2025</span>
+                <span class="group-open:rotate-180 transition text-slate-400">▾</span>
+              </summary>
+              <ul class="mt-2.5 pt-2 border-t border-slate-100 space-y-1.5 text-slate-600 text-[11px]">
+                <li>• Guiso Fest (Edición 2025)</li>
+                <li>• Toma de Posesión Rectora Cecilia Dipiazza</li>
+                <li>• Mateada Patria 2025</li>
+                <li>• Llamados a Concurso Docente (Juntas CABA)</li>
+              </ul>
+            </details>
+
+            <details class="group bg-white p-3 rounded-xl border border-slate-200">
+              <summary class="font-bold text-slate-800 cursor-pointer flex items-center justify-between">
+                <span>Ciclo Lectivo 2024</span>
+                <span class="group-open:rotate-180 transition text-slate-400">▾</span>
+              </summary>
+              <ul class="mt-2.5 pt-2 border-t border-slate-100 space-y-1.5 text-slate-600 text-[11px]">
+                <li>• Noche de los Museos 2024</li>
+                <li>• Jornada de Inclusión Esc. Magnasco</li>
+                <li>• Feria de Infusiones "Emprendedores Unidos"</li>
+                <li>• 1° Cata de Vinos Sommelier Axel Trebino</li>
+              </ul>
+            </details>
+
+            <details class="group bg-white p-3 rounded-xl border border-slate-200">
+              <summary class="font-bold text-slate-800 cursor-pointer flex items-center justify-between">
+                <span>Ciclos 2021 a 2023</span>
+                <span class="group-open:rotate-180 transition text-slate-400">▾</span>
+              </summary>
+              <ul class="mt-2.5 pt-2 border-t border-slate-100 space-y-1.5 text-slate-600 text-[11px]">
+                <li>• Clases Magistrales Prof. Francisco Giménez</li>
+                <li>• Programas y Reglamentos Anteriores</li>
+              </ul>
+            </details>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ================= CONTACTO Y FORMULARIO DE BEDELÍA ================= -->
+  <section id="contacto" class="py-16 bg-slate-50 border-b border-slate-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+        
+        <!-- Información de Sede -->
+        <div>
+          <span class="text-xs font-bold text-amber-700 uppercase tracking-widest bg-amber-100/60 px-2.5 py-1 rounded">
+            Atención al Estudiante
+          </span>
+          <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 mt-2 tracking-tight">
+            Canal Institucional & Sede
+          </h2>
+          <p class="text-xs sm:text-sm text-slate-600 mt-2 leading-relaxed">
+            Las consultas administrativas de alumnos regulares y aspirantes se gestionan a través de Bedelía del IFTS N° 2.
+          </p>
+
+          <div class="mt-8 space-y-4 text-xs">
+            <div class="flex items-start gap-3 p-4 rounded-xl bg-white border border-slate-200">
+              <span class="text-lg">📍</span>
+              <div>
+                <span class="font-bold text-slate-900 block">Sede D.E. 20</span>
+                <span class="text-slate-600">Ciudad Autónoma de Buenos Aires</span>
+              </div>
+            </div>
+
+            <div class="flex items-start gap-3 p-4 rounded-xl bg-white border border-slate-200">
+              <span class="text-lg">🕒</span>
+              <div>
+                <span class="font-bold text-slate-900 block">Horario de Cursada y Bedelía</span>
+                <span class="text-slate-600">Lunes a Viernes de 18:00 a 22:40 hs</span>
+              </div>
+            </div>
+
+            <div class="flex items-start gap-3 p-4 rounded-xl bg-white border border-slate-200">
+              <span class="text-lg">✉️</span>
+              <div>
+                <span class="font-bold text-slate-900 block">Correo Oficial de Bedelía</span>
+                <span class="text-slate-600 font-mono">bedelia.ifts2@bue.edu.ar</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Formulario Formal de Contacto -->
+        <div class="bg-white p-6 sm:p-8 rounded-2xl border border-slate-200 shadow-xs">
+          <h3 class="text-base font-bold text-slate-900 mb-1">Formulario de Contacto a Bedelía</h3>
+          <p class="text-xs text-slate-500 mb-5">Las solicitudes se derivan automáticamente al equipo de gestión académica.</p>
+
+          <form onsubmit="handleFormSubmit(event)" class="space-y-4 text-xs">
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div>
+                <label class="block font-semibold text-slate-700 mb-1">Nombre Completo</label>
+                <input type="text" required placeholder="Ej: Juan Pérez" class="w-full bg-slate-50 border border-slate-200 rounded-lg p-2.5 focus:bg-white focus:outline-amber-500">
+              </div>
+              <div>
+                <label class="block font-semibold text-slate-700 mb-1">Correo Institucional / Personal</label>
+                <input type="email" required placeholder="ejemplo@bue.edu.ar" class="w-full bg-slate-50 border border-slate-200 rounded-lg p-2.5 focus:bg-white focus:outline-amber-500">
+              </div>
+            </div>
+
+            <div>
+              <label class="block font-semibold text-slate-700 mb-1">Trámite o Consulta</label>
+              <select class="w-full bg-slate-50 border border-slate-200 rounded-lg p-2.5 focus:bg-white focus:outline-amber-500 font-medium text-slate-700">
+                <option>Constancia de Alumno Regular</option>
+                <option>Consulta de Régimen de Correlatividades</option>
+                <option>Inscripción a Prácticas Profesionalizantes</option>
+                <option>Mesas de Examen Final</option>
+                <option>Aspirante a Ingreso (Documentación)</option>
+              </select>
+            </div>
+
+            <div>
+              <label class="block font-semibold text-slate-700 mb-1">Mensaje o Detalle</label>
+              <textarea rows="3" required placeholder="Escribí aquí el detalle de tu solicitud..." class="w-full bg-slate-50 border border-slate-200 rounded-lg p-2.5 focus:bg-white focus:outline-amber-500"></textarea>
+            </div>
+
+            <button type="submit" class="w-full bg-amber-600 hover:bg-amber-500 text-slate-950 font-extrabold py-3 rounded-lg transition shadow-xs">
+              Enviar Solicitud a Bedelía
+            </button>
+          </form>
+          <div id="form-success" class="hidden mt-3 p-3 bg-emerald-50 border border-emerald-200 rounded-lg text-xs text-emerald-800 font-medium text-center">
+            ✓ Tu solicitud ha sido enviada exitosamente a la casilla de Bedelía del IFTS N° 2.
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ================= FOOTER INSTITUCIONAL ================= -->
+  <footer class="bg-slate-950 text-slate-400 py-12 text-xs border-t border-slate-900">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-6">
+      <div>
+        <p class="font-bold text-white text-sm">Instituto de Formación Técnica Superior N° 2 de 20</p>
+        <p class="text-slate-500 text-[11px] mt-0.5">Tecnicatura Superior en Emprendimientos Gastronómicos • CABA</p>
+      </div>
+      <div class="flex flex-wrap items-center gap-6 text-[11px]">
+        <a href="https://guarani-autogestionagencia.bue.edu.ar/" target="_blank" class="hover:text-amber-400 transition">SIU Guaraní</a>
+        <a href="https://aulasvirtuales.bue.edu.ar/" target="_blank" class="hover:text-amber-400 transition">Campus Moodle</a>
+        <a href="https://www.instagram.com/ifts2de20" target="_blank" class="hover:text-amber-400 transition">Instagram @ifts2de20</a>
+        <a href="#contacto" class="hover:text-amber-400 transition">Bedelía</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ================= MODAL DE DETALLE DEL POST (LIGHTBOX) ================= -->
+  <div id="post-modal" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+    <div class="bg-white rounded-3xl max-w-3xl w-full overflow-hidden shadow-2xl flex flex-col md:flex-row max-h-[90vh]">
+      
+      <!-- Lado Imagen (Uniforme) -->
+      <div class="md:w-1/2 bg-black flex items-center justify-center overflow-hidden">
+        <img id="modal-img" src="" alt="Post Instagram" class="w-full h-full object-cover max-h-[350px] md:max-h-full aspect-square">
+      </div>
+
+      <!-- Lado Datos del Post -->
+      <div class="md:w-1/2 p-6 flex flex-col justify-between bg-white overflow-y-auto">
+        <div>
+          <div class="flex items-center justify-between border-b border-slate-100 pb-3">
+            <div class="flex items-center gap-3">
+              <div class="w-8 h-8 rounded-full bg-gradient-to-tr from-amber-400 to-rose-600 p-0.5">
+                <div class="w-full h-full bg-white rounded-full flex items-center justify-center font-bold text-[10px]">
+                  IF2
+                </div>
+              </div>
+              <div>
+                <span class="text-xs font-bold text-slate-900">@ifts2de20</span>
+                <span class="text-[10px] text-slate-400 block" id="modal-date">04 Julio 2025</span>
+              </div>
+            </div>
+            <button onclick="closePostModal()" class="text-slate-400 hover:text-slate-700 text-xl font-bold p-1">✕</button>
+          </div>
+
+          <div class="py-4">
+            <h4 class="text-base font-bold text-slate-900 mb-2" id="modal-title">Título</h4>
+            <p class="text-xs text-slate-600 leading-relaxed" id="modal-desc">Descripción del post.</p>
+            <div class="mt-4 flex flex-wrap gap-1.5" id="modal-tags"></div>
+          </div>
+        </div>
+
+        <div class="pt-4 border-t border-slate-100 flex items-center justify-between">
+          <span class="text-[11px] text-slate-400">Publicado en @ifts2de20</span>
+          <a href="https://instagram.com" target="_blank" class="inline-flex items-center gap-1.5 bg-gradient-to-r from-purple-600 to-pink-600 text-white text-xs font-bold px-4 py-2 rounded-lg hover:opacity-90 transition">
+            <span>Ver en Instagram ↗</span>
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ================= SCRIPTS DEL PROTOTIPO ================= -->
+  <script>
+    // Datos de los posts
+    const postData = {
+      'guiso-fest': {
+        title: 'Guiso Fest 2025: Práctica en Gran Escala',
+        date: '04 de Julio, 2025',
+        img: 'https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=800&q=80',
+        desc: 'Evento de Prácticas Profesionalizantes del IFTS N°2 el 04 de Julio 2025. Agradecemos a la Esc. Sup. de Educación Artística en Danza N° 2 "Jorge Donn" y a la Dirección de Educación Artística.',
+        tags: ['#PrácticasProfesionalizantes', '#GuisoFest', '#IFTS2', '#GastronomíaEmpresarial']
+      },
+      'mateada': {
+        title: 'Mateada Patria Institucional',
+        date: '22 de Mayo, 2025',
+        img: 'https://images.unsplash.com/photo-1596797038530-2c107229654b?auto=format&fit=crop&w=800&q=80',
+        desc: 'Encuentro anual de toda la comunidad del IFTS 2 en el marco de las fechas patrias. Criterio de curaduría: solo se muestra la última edición vigente en portada.',
+        tags: ['#ComunidadIFTS', '#MateadaPatria', '#EducaciónPública']
+      },
+      'infusiones': {
+        title: 'Feria de Infusiones y Blends Culinarios',
+        date: '23 de Mayo, 2024',
+        img: 'https://images.unsplash.com/photo-1576092768241-dec231879fc3?auto=format&fit=crop&w=800&q=80',
+        desc: 'Feria de presentación de productos gastronómicos organizada por los alumnos de 3° año ("Emprendedores Unidos"). Costos, packaging y comercialización.',
+        tags: ['#EmprendedoresUnidos', '#ProyectoFinal', '#PlanDeNegocio']
+      },
+      'cata-vinos': {
+        title: '1° Cata de Vinos en el IFTS N° 2',
+        date: 'Noviembre, 2024',
+        img: 'https://images.unsplash.com/photo-1510812431401-41d2bd2722f3?auto=format&fit=crop&w=800&q=80',
+        desc: 'A cargo del Prof. Sommelier Axel Trebino con los estudiantes de 3° año en sus prácticas profesionales.',
+        tags: ['#CataDeVinos', '#Sommelerie', '#Bebidas', '#Prácticas']
+      },
+      'museos': {
+        title: 'Participación en la Noche de los Museos',
+        date: 'Noviembre, 2024',
+        img: 'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=800&q=80',
+        desc: 'El IFTS N°2 en el circuito cultural porteño, con muestras gastronómicas abiertas a la comunidad.',
+        tags: ['#NocheDeLosMuseos', '#CulturaCABA', '#IFTS2']
+      },
+      'delantales': {
+        title: 'Confección de Uniformes con Esc. Magnasco',
+        date: 'Octubre, 2024',
+        img: 'https://images.unsplash.com/photo-1556911220-e15b29be8c8f?auto=format&fit=crop&w=800&q=80',
+        desc: 'Proyecto de articulación con la Escuela Bilingüe N°29 Dr. Osvaldo Magnasco para la confección y sublimado de gorros y delantales.',
+        tags: ['#Inclusión', '#ProyectoInterinstitucional', '#EducaciónPública']
+      }
+    };
+
+    // Navegación del Carrusel
+    function scrollCarousel(direction) {
+      const track = document.getElementById('carousel-track');
+      const cardWidth = 340; // Ancho aproximado de tarjeta + gap
+      track.scrollBy({ left: direction * cardWidth, behavior: 'smooth' });
+    }
+
+    // Filtros del Carrusel
+    function filterCarousel(category, targetBtn) {
+      const slides = document.querySelectorAll('.insta-slide');
+      const buttons = document.querySelectorAll('.c-filter-btn');
+
+      buttons.forEach(btn => {
+        btn.classList.remove('bg-amber-500', 'text-slate-950');
+        btn.classList.add('bg-slate-800', 'text-slate-300');
+      });
+      if (targetBtn) {
+        targetBtn.classList.remove('bg-slate-800', 'text-slate-300');
+        targetBtn.classList.add('bg-amber-500', 'text-slate-950');
+      }
+
+      slides.forEach(slide => {
+        if (category === 'all' || slide.dataset.category === category) {
+          slide.style.display = 'block';
+        } else {
+          slide.style.display = 'none';
+        }
+      });
+    }
+
+    // Tabs del Plan de Estudios
+    function switchYearTab(yearId, btn) {
+      document.querySelectorAll('.year-content').forEach(c => c.classList.add('hidden'));
+      document.getElementById(yearId).classList.remove('hidden');
+
+      document.querySelectorAll('.year-btn').forEach(b => {
+        b.classList.remove('bg-white', 'text-slate-900', 'shadow-xs');
+        b.classList.add('text-slate-600');
+      });
+      btn.classList.add('bg-white', 'text-slate-900', 'shadow-xs');
+      btn.classList.remove('text-slate-600');
+    }
+
+    // Modal de Post
+    function openPostModal(key) {
+      const data = postData[key];
+      if (!data) return;
+
+      document.getElementById('modal-img').src = data.img;
+      document.getElementById('modal-title').textContent = data.title;
+      document.getElementById('modal-date').textContent = data.date;
+      document.getElementById('modal-desc').textContent = data.desc;
+
+      const tagsContainer = document.getElementById('modal-tags');
+      tagsContainer.innerHTML = '';
+      data.tags.forEach(t => {
+        const span = document.createElement('span');
+        span.className = 'text-[10px] font-semibold text-amber-800 bg-amber-100 px-2 py-0.5 rounded';
+        span.textContent = t;
+        tagsContainer.appendChild(span);
+      });
+
+      document.getElementById('post-modal').classList.remove('hidden');
+    }
+
+    function closePostModal() {
+      document.getElementById('post-modal').classList.add('hidden');
+    }
+
+    function handleFormSubmit(e) {
+      e.preventDefault();
+      document.getElementById('form-success').classList.remove('hidden');
+      e.target.reset();
+      setTimeout(() => {
+        document.getElementById('form-success').classList.add('hidden');
+      }, 6000);
+    }
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closePostModal();
+    });
+  </script>
+
+</body>
+</html>
