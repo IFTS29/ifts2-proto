@@ -1,0 +1,13 @@
+/* ==========================================================================
+   Estilos específicos y utilidades para el portal IFTS N° 2
+   ========================================================================== */
+
+/* Ocultamiento de barras de desplazamiento nativas en carruseles y listas */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
