@@ -1,0 +1,32 @@
+{
+  "updated_at": "2026-09-06T07:47:04.613638",
+  "posts": [
+    {
+      "id": "mock_1",
+      "caption": "Concurso Anual de Guisos Criollos del IFTS N° 2. Estudiantes de 2° año recrearon recetas tradicionales calculando mermas y rendimientos reales. #IFTS2Eventos #GuisoFest #Cocina",
+      "category": "eventos",
+      "media_type": "IMAGE",
+      "image_local_url": "https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=800&q=80",
+      "permalink": "https://instagram.com/ifts_2_ok",
+      "timestamp": "2026-09-06T07:47:04.613597"
+    },
+    {
+      "id": "mock_2",
+      "caption": "Felicitamos a los egresados de la promoción 2024 que abrieron su local comercial en Caballito tras aprobar su proyecto integrador. #IFTS2Emprende #Emprendimientos #NegocioGastronomico",
+      "category": "emprendimientos",
+      "media_type": "IMAGE",
+      "image_local_url": "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=800&q=80",
+      "permalink": "https://instagram.com/ifts_2_ok",
+      "timestamp": "2026-09-06T07:47:04.613604"
+    },
+    {
+      "id": "mock_3",
+      "caption": "Masterclass de chocolatería fina y templado de precisión. Enfoque en costeo por porción y vida útil en anaquel. #IFTS2Masterclass #Pasteleria #Chocolateria",
+      "category": "masterclass",
+      "media_type": "IMAGE",
+      "image_local_url": "https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=800&q=80",
+      "permalink": "https://instagram.com/ifts_2_ok",
+      "timestamp": "2026-09-06T07:47:04.613606"
+    }
+  ]
+}
