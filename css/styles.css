@@ -427,7 +427,7 @@ p {
 .portada {
   position: relative;
   color: #fff;
-  background: #1c1c1c url(img/img-c51d02b2.jpg) center 30% / cover no-repeat;
+  background: #1c1c1c url(../img/img-c51d02b2.jpg) center 30% / cover no-repeat;
   min-height: clamp(600px, 76vh, 740px);
   display: flex;
   align-items: center;
@@ -814,7 +814,7 @@ p {
   flex-direction: column;
   justify-content: flex-end;
   min-height: 360px;
-  background: #222 url(img/verduras.jpg) center 30% / cover;
+  background: #222 url(../img/verduras.jpg) center 30% / cover;
 }
 
 .resultado::before {
@@ -1499,7 +1499,7 @@ tr:last-child td {
 .llamado {
   position: relative;
   color: #fff;
-  background: #1c1c1c url(img/plato.jpg) center/cover;
+  background: #1c1c1c url(../img/plato.jpg) center/cover;
 }
 
 .llamado::before {
@@ -1977,7 +1977,7 @@ tr:last-child td {
 
 .login .lado-foto {
   position: relative;
-  background: #1c1c1c url(img/img-928eb3ce.jpg) center/cover;
+  background: #1c1c1c url(../img/img-928eb3ce.jpg) center/cover;
   color: #fff;
   display: flex;
   align-items: flex-end;

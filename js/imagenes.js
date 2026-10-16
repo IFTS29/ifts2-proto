@@ -16,5 +16,5 @@ document.querySelectorAll("[data-img]").forEach(function (e) {
   e.src = IMGS[e.getAttribute("data-img")];
 });
 document.querySelectorAll("[data-fondo]").forEach(function (e) {
-  e.style.setProperty("--foto", "url(" + IMGS[e.getAttribute("data-fondo")] + ")");
+  e.style.setProperty("--foto", "url(../" + IMGS[e.getAttribute("data-fondo")] + ")");
 });
