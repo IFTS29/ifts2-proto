@@ -43,8 +43,6 @@
     }
     revisar();
     document.getElementById("menu").classList.remove("abierto");
-    var dm = document.getElementById("demo");
-    dm.classList.remove("abierto");
   }
   function revisar() {
     enc.classList.toggle("fijo", window.scrollY > 40);
@@ -125,12 +123,6 @@
     setInterval(function () {
       if (!pausa && !document.hidden && ruta() === "inicio") mover(1);
     }, 5000);
-  var db = document.getElementById("demo-btn"),
-    dm = document.getElementById("demo");
-  db.addEventListener("click", function () {
-    var a = dm.classList.toggle("abierto");
-    db.setAttribute("aria-expanded", a);
-  });
   var vb = document.querySelectorAll(".vista button"),
     vw = document.querySelector(".vista"),
     ge = document.querySelector('[data-pagina="eventos"] .grilla-eventos');
